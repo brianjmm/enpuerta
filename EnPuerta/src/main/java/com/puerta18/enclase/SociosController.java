@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.puerta18.model.socio;
+import com.puerta18.model.Socio;
 
 @Controller
 public class SociosController {
@@ -95,7 +95,7 @@ public class SociosController {
 
 		ResultSet resultados = consulta.executeQuery();
 
-		ArrayList<socio> lossocio = new ArrayList<socio>();
+		ArrayList<Socio> lossocio = new ArrayList<Socio>();
 
 		System.out.println("hola2");
 		while (resultados.next())
@@ -120,7 +120,7 @@ public class SociosController {
 			boolean presente = resultados.getBoolean("presente");
 			Date fecha_de_nacimiento = resultados.getDate("fecha_de_nacimiento");
 
-			socio elsocio = new socio(id,nombre,apellido,email,dni,presente,celular,telefono,telefono2,direccion,genero,localidad,fecha_de_nacimiento);
+			Socio elsocio = new Socio(id,nombre,apellido,email,dni,presente,celular,telefono,telefono2,direccion,genero,fecha_de_nacimiento);
 
 			lossocio.add(elsocio);
 		}

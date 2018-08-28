@@ -2,7 +2,7 @@ package com.puerta18.model;
 
 import java.sql.Date;
 
-public class socio {
+public class Socio {
 	int id;
 	String nombre;
 	String apellido;
@@ -15,7 +15,7 @@ public class socio {
 	String direccion;
 	String genero;
 	Date fecha_de_nacimiento;
-	public socio(int id, String nombre, String apellido, String email, String dni, boolean presente, String celular,
+	public Socio(int id, String nombre, String apellido, String email, String dni, boolean presente, String celular,
 			String telefono, String telefono2, String direccion, String genero, Date fecha_de_nacimiento) {
 		super();
 		this.id = id;
