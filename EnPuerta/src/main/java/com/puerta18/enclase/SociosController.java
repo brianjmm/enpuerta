@@ -49,7 +49,7 @@ public class SociosController {
 				env.getProperty("spring.datasource.username"), env.getProperty("spring.datasource.password"));
 
 		PreparedStatement consulta = connection
-				.prepareStatement("INSERT INTO socios(nombre, apellido, email, dni, presente, celular, telefono, telefono2, direccion, genero, fecha_de_nacimiento  ) VALUES(?, ?, ?, ?, ? , ? , ?, ? , ? ,? , ? );");
+				.prepareStatement("INSERT INTO socios(nombre, apellido, email, dni, celular, telefono, telefono2, direccion, genero, fecha_de_nacimiento  ) VALUES(?, ?, ?, ?, ? , ? , ?, ? , ? ,?  );");
 
 		consulta.setString(1, nombre);
 		consulta.setString(2, apellido);
