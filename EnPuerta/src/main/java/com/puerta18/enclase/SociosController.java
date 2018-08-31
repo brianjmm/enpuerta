@@ -127,7 +127,7 @@ public class SociosController {
 		    String telefono2 = resultados.getString("telefono2");
 			String direccion = resultados.getString("direccion");
 			String genero = resultados.getString("genero");
-			String localidad = resultados.getString("localidad");
+			
 			
 			Date fecha_de_nacimiento = resultados.getDate("fecha_de_nacimiento");
 
