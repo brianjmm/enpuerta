@@ -38,7 +38,8 @@ public class SociosController {
 
 	@GetMapping("/socios/nuevo/procesar")
 	public String insertarNuevoCurso(@RequestParam String nombre, @RequestParam String apellido,
-			@RequestParam String email, @RequestParam String dni) throws SQLException {
+			@RequestParam String email, @RequestParam String dni,@RequestParam  boolean presente,@RequestParam String celular,
+			@RequestParam String telefono,@RequestParam String telefono2,@RequestParam String direccion,@RequestParam String genero,@RequestParam Date fecha_de_nacimiento) throws SQLException {
 
 		Connection connection; // Usar el import de java.sql
 
@@ -46,12 +47,20 @@ public class SociosController {
 				env.getProperty("spring.datasource.username"), env.getProperty("spring.datasource.password"));
 
 		PreparedStatement consulta = connection
-				.prepareStatement("INSERT INTO socios(nombre, apellido, email, dni) VALUES(?, ?, ?, ? );");
+				.prepareStatement("INSERT INTO socios(nombre, apellido, email, dni, presente, celular, telefono, telefono2, direccion, genero, fecha_de_nacimiento  ) VALUES(?, ?, ?, ?, ? , ? , ?, ? , ? ,? , ? );");
 
 		consulta.setString(1, nombre);
 		consulta.setString(2, apellido);
 		consulta.setString(3, email);
 		consulta.setString(4, dni);
+		consulta.setBoolean(5, presente);
+		consulta.setString(6, celular);
+		consulta.setString(7, telefono);
+		consulta.setString(8, telefono2);
+		consulta.setString(9, direccion);
+		consulta.setString(10, genero);
+		consulta.setDate(11, fecha_de_nacimiento);
+		
 
 		consulta.execute();
 		connection.close();
