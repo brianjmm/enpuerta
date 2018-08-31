@@ -41,7 +41,7 @@ public class SociosController {
 	@GetMapping("/socios/nuevo/procesar")
 	public String insertarNuevoCurso(@RequestParam String nombre, @RequestParam String apellido,
 			@RequestParam String email, @RequestParam String dni,@RequestParam  boolean presente,@RequestParam String celular,
-			@RequestParam String telefono,@RequestParam String telefono2,@RequestParam String direccion,@RequestParam String genero,@RequestParam Date fecha_de_nacimiento) throws SQLException {
+			@RequestParam String telefono,@RequestParam String telefono2,@RequestParam String localidad,@RequestParam String direccion, @RequestParam String genero,@RequestParam Date fecha_de_nacimiento) throws SQLException {
 
 		Connection connection; // Usar el import de java.sql
 
@@ -49,7 +49,7 @@ public class SociosController {
 				env.getProperty("spring.datasource.username"), env.getProperty("spring.datasource.password"));
 
 		PreparedStatement consulta = connection
-				.prepareStatement("INSERT INTO socios(nombre, apellido, email, dni, celular, telefono, telefono2, direccion, genero, fecha_de_nacimiento  ) VALUES(?, ?, ?, ?, ? , ? , ?, ? , ? ,?  );");
+				.prepareStatement("INSERT INTO socios(nombre, apellido, email, dni, celular, telefono, telefono2, direccion,localidad, genero, fecha_de_nacimiento  ) VALUES(?, ?, ?, ?, ? , ? , ?, ? , ? ,? ,?,? );");
 
 		consulta.setString(1, nombre);
 		consulta.setString(2, apellido);
@@ -60,8 +60,9 @@ public class SociosController {
 		consulta.setString(7, telefono);
 		consulta.setString(8, telefono2);
 		consulta.setString(9, direccion);
-		consulta.setString(10, genero);
-		consulta.setDate(11, fecha_de_nacimiento);
+		consulta.setString(10, localidad);
+		consulta.setString(12, genero);
+		consulta.setDate(13, fecha_de_nacimiento);
 		
 
 		consulta.execute();
@@ -116,22 +117,19 @@ public class SociosController {
 			int id = resultados.getInt("id");
 
 			String nombre = resultados.getString("nombre");
-
 			String apellido = resultados.getString("apellido");
-
 			String email = resultados.getString("email");
 			String dni = resultados.getString("dni");
-			boolean presente = resultados.getBoolean("presente");
 			String celular = resultados.getString("celular");
 			String telefono = resultados.getString("telefono");
 		    String telefono2 = resultados.getString("telefono2");
 			String direccion = resultados.getString("direccion");
+			String localidad = resultados.getString("localidad");
 			String genero = resultados.getString("genero");
-			
-			
 			Date fecha_de_nacimiento = resultados.getDate("fecha_de_nacimiento");
+			boolean presente = resultados.getBoolean("presente");
 
-			Socio elsocio = new Socio(id,nombre,apellido,email,dni,presente,celular,telefono,telefono2,direccion,genero,fecha_de_nacimiento);
+			Socio elsocio = new Socio(id,nombre,apellido,email,dni,celular,telefono,telefono2,direccion,localidad,genero,fecha_de_nacimiento, presente);
 
 			lossocio.add(elsocio);
 		}
