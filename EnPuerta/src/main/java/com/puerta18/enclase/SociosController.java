@@ -30,6 +30,8 @@ public class SociosController {
 	public String landing() {
 		return "index";
 	}
+	
+	
 
 	@GetMapping("/socios/nuevo") // formulario de alta vacio
 	public String nuevo() {
@@ -119,14 +121,14 @@ public class SociosController {
 
 			String email = resultados.getString("email");
 			String dni = resultados.getString("dni");
-
+			boolean presente = resultados.getBoolean("presente");
 			String celular = resultados.getString("celular");
 			String telefono = resultados.getString("telefono");
 		    String telefono2 = resultados.getString("telefono2");
 			String direccion = resultados.getString("direccion");
 			String genero = resultados.getString("genero");
 			String localidad = resultados.getString("localidad");
-			boolean presente = resultados.getBoolean("presente");
+			
 			Date fecha_de_nacimiento = resultados.getDate("fecha_de_nacimiento");
 
 			Socio elsocio = new Socio(id,nombre,apellido,email,dni,presente,celular,telefono,telefono2,direccion,genero,fecha_de_nacimiento);
